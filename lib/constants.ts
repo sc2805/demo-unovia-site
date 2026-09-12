@@ -21,6 +21,8 @@ export const NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
+  { label: "DSC Services", href: "/dsc" },
+  { label: "Tally Importer", href: "/tally-importer" },
   { label: "Insights", href: "/insights" },
   { label: "Calculators", href: "/calculators/sip-lumpsum" },
   { label: "Daily Brief", href: "/daily-brief" },
@@ -28,6 +30,30 @@ export const NAV_LINKS = [
 ] as const;
 
 export const SERVICES = [
+  {
+    slug: "digital-signature-certificate",
+    title: "Digital Signature Certificate (DSC)",
+    shortDescription:
+      "Instant paperless Class 3 DSC issuance with Aadhaar eKYC, video verification, and door-step USB cryptographic token delivery across India.",
+    description:
+      "Get legally compliant, Govt/CCA-approved Class 3 Digital Signature Certificates (DSC) issued in as little as 15 minutes. Designed for Directors, Businesses, CAs, Tax Consultants, Importers/Exporters, and Govt Bidders — covering MCA/ROC filings, Income Tax & GST, e-Tendering, ICEGATE, and Trademarks.",
+    icon: "Key",
+    color: "from-cyan-500 to-blue-600",
+    offerings: [
+      "Class 3 Individual DSC (Signing & Combo)",
+      "Class 3 Organization DSC (Company & Firm Signatories)",
+      "DGFT Digital Signature for Import-Export",
+      "Foreign National / NRI DSC Issuance",
+      "FIPS 140-2 Level 3 Cryptographic USB Tokens (Proxkey / ePass)",
+      "100% Paperless 15-Min Video eKYC Approval",
+    ],
+    process: [
+      { step: "Selection", desc: "Select certificate type, validity (1-3 yrs), and USB token option." },
+      { step: "Verification", desc: "Complete 30-second video eKYC and Aadhaar OTP verification." },
+      { step: "Issuance", desc: "Instant approval by Certifying Authority (CCA approved)." },
+      { step: "Delivery", desc: "Download instantly or receive pre-loaded USB token at your doorstep." },
+    ],
+  },
   {
     slug: "wealth-management",
     title: "Wealth Management",

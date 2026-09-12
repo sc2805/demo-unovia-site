@@ -1,0 +1,50 @@
+{
+  "id": "UNV-DSC-E4R7CX",
+  "createdAt": "2026-09-12T18:39:24.954Z",
+  "updatedAt": "2026-09-12T18:39:24.984Z",
+  "applicant": {
+    "fullName": "shubham Chowdhary",
+    "mobile": "07003796857",
+    "email": "shubham.chowdhary@yahoo.com",
+    "pan": "BEEPC9238P",
+    "applicantType": "individual",
+    "billingAddress": "359 BENI MASTER LANE,BENIMADHAV APARTMENT",
+    "city": "KOLKATA",
+    "state": "West Bengal",
+    "pinCode": "700061"
+  },
+  "pricing": {
+    "lineItems": [
+      {
+        "productId": "c3s-3y",
+        "productName": "Class 3 Signing – 3 Years",
+        "certificateType": "Signing",
+        "validityYears": 3,
+        "quantity": 1,
+        "unitBasicAmount": 1271.19,
+        "unitGstAmount": 228.81,
+        "unitGrossAmount": 1500,
+        "lineBasicAmount": 1271.19,
+        "lineGstAmount": 228.81,
+        "lineGrossAmount": 1500
+      }
+    ],
+    "tokenSelected": true,
+    "tokenAmount": 500,
+    "supportChargeEnabled": false,
+    "supportChargeAmount": 0,
+    "subtotalBasicAmount": 1271.19,
+    "subtotalGstAmount": 228.81,
+    "subtotalGrossAmount": 1500,
+    "totalAmount": 2000
+  },
+  "orderState": "pending",
+  "paymentStatus": "pending",
+  "paymentMethod": "offline",
+  "notes": "",
+  "whatsappNotificationStatus": "failed",
+  "whatsappNotificationMessageId": null,
+  "whatsappNotificationError": "WhatsApp Business API credentials not configured. Message logged to console.",
+  "whatsappNotificationSentAt": null,
+  "idempotencyKey": "shubham.chowdhary@yahoo.com-1789238362006-1walwr9e"
+}

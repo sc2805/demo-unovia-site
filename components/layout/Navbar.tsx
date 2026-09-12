@@ -7,14 +7,16 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X, ArrowRight, ShoppingCart } from "lucide-react";
 import Logo from "@/components/ui/Logo";
 import { NAV_LINKS } from "@/lib/constants";
+import { useCart } from "@/lib/dsc/cart-context";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const { cartCount } = useCart();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -69,6 +71,21 @@ export default function Navbar() {
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-3">
             <Link
+              href="/dsc/cart"
+              className="relative p-2.5 rounded-lg text-gray-600 hover:text-navy-800 hover:bg-gray-50 transition-colors"
+              aria-label={`DSC Shopping Cart (${cartCount} items)`}
+              title="DSC Shopping Cart"
+              id="nav-cart-btn"
+            >
+              <ShoppingCart className="w-5 h-5" />
+              {cartCount > 0 && (
+                <span className="absolute -top-1 -right-1 bg-gold-500 text-navy-950 text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center shadow-sm">
+                  {cartCount}
+                </span>
+              )}
+            </Link>
+
+            <Link
               href="/contact"
               className="inline-flex items-center gap-2 px-5 py-2.5 bg-navy-800 text-white text-sm font-semibold rounded-lg hover:bg-navy-700 transition-all duration-300 shadow-md shadow-navy-800/20 hover:shadow-lg hover:shadow-navy-800/25 hover:-translate-y-0.5"
               id="nav-cta"
@@ -78,15 +95,30 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile Menu Toggle */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-lg text-gray-600 hover:text-navy-800 hover:bg-gray-50 transition-colors"
-            aria-label="Toggle menu"
-            id="mobile-menu-toggle"
-          >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          {/* Mobile Right Icons (Cart + Hamburger) */}
+          <div className="flex items-center gap-1 md:hidden">
+            <Link
+              href="/dsc/cart"
+              className="relative p-2 rounded-lg text-gray-600 hover:text-navy-800 transition-colors"
+              aria-label="DSC Shopping Cart"
+            >
+              <ShoppingCart className="w-5 h-5" />
+              {cartCount > 0 && (
+                <span className="absolute -top-0.5 -right-0.5 bg-gold-500 text-navy-950 text-[10px] font-black w-4 h-4 rounded-full flex items-center justify-center">
+                  {cartCount}
+                </span>
+              )}
+            </Link>
+
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2 rounded-lg text-gray-600 hover:text-navy-800 hover:bg-gray-50 transition-colors"
+              aria-label="Toggle menu"
+              id="mobile-menu-toggle"
+            >
+              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -123,6 +155,27 @@ export default function Navbar() {
               </Link>
             );
           })}
+
+          <Link
+            href="/dsc/cart"
+            className="flex items-center justify-between px-4 py-3 rounded-xl text-base font-medium text-navy-900 bg-gold-50/60 border border-gold-200/60"
+          >
+            <span className="flex items-center gap-2 font-semibold">
+              <ShoppingCart className="w-4 h-4 text-gold-600" />
+              DSC Shopping Cart
+            </span>
+            <span className="bg-gold-500 text-navy-950 text-xs font-black px-2 py-0.5 rounded-full">
+              {cartCount} {cartCount === 1 ? "item" : "items"}
+            </span>
+          </Link>
+
+          <Link
+            href="/dsc/track"
+            className="block px-4 py-2.5 rounded-xl text-sm font-medium text-gray-500 hover:text-navy-800"
+          >
+            Track DSC Order Status →
+          </Link>
+
           <div className="pt-3 pb-1">
             <Link
               href="/contact"

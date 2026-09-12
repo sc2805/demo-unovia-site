@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, CheckCircle2, TrendingUp, FileText, Shield, Briefcase, Stamp } from "lucide-react";
+import { ArrowLeft, ArrowRight, CheckCircle2, TrendingUp, FileText, Shield, Briefcase, Stamp, Key } from "lucide-react";
 import Button from "@/components/ui/Button";
 import CTABanner from "@/components/sections/CTABanner";
 import { SERVICES } from "@/lib/constants";
@@ -10,7 +10,7 @@ import { notFound } from "next/navigation";
 // Service Detail Page — Dynamic route for each service
 // =============================================================================
 
-const iconMap = { TrendingUp, FileText, Shield, Briefcase, Stamp };
+const iconMap = { TrendingUp, FileText, Shield, Briefcase, Stamp, Key };
 
 export async function generateStaticParams() {
   return SERVICES.map((service) => ({ slug: service.slug }));
