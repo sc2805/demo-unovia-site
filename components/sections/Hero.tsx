@@ -1,4 +1,4 @@
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ArrowRight, ChevronDown, TrendingUp } from "lucide-react";
 import Button from "@/components/ui/Button";
 
 // =============================================================================
@@ -14,13 +14,13 @@ export default function Hero() {
       {/* Decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Abstract circles */}
-        <div className="absolute -top-24 -right-24 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-navy-600/20 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/3 w-72 h-72 bg-gold-500/3 rounded-full blur-3xl" />
+        <div className="absolute -top-24 -right-24 w-[500px] h-[500px] bg-gold-500/5 rounded-full blur-3xl animate-float" />
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-navy-600/20 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/3 w-80 h-80 bg-gold-500/3 rounded-full blur-3xl" />
 
         {/* Grid pattern */}
         <div
-          className="absolute inset-0 opacity-[0.02]"
+          className="absolute inset-0 opacity-[0.03]"
           style={{
             backgroundImage:
               "linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)",
@@ -31,7 +31,7 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
-        <div className="max-w-3xl">
+        <div className="max-w-4xl">
           {/* Eyebrow */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/5 border border-white/10 rounded-full mb-8 animate-fade-in" style={{ marginTop: "2mm" }}>
             <div className="w-1.5 h-1.5 bg-gold-500 rounded-full animate-pulse" />
@@ -58,12 +58,19 @@ export default function Hero() {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up stagger-3 opacity-0">
-            <Button href="/contact" variant="secondary" size="lg" id="hero-cta-primary">
+            <a
+              href="https://partners.creso.in/mfd/unovia"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-400 hover:to-gold-500 text-navy-950 font-extrabold text-sm rounded-xl shadow-xl hover:scale-105 transition-all"
+              id="hero-cta-investment"
+            >
+              Start Your Investment Journey
+              <TrendingUp className="w-4 h-4 text-navy-950" />
+            </a>
+            <Button href="/contact" variant="outline" size="lg" className="border-white/20 text-white hover:bg-white/10 hover:text-white" id="hero-cta-primary">
               Book a Consultation
               <ArrowRight className="w-5 h-5" />
-            </Button>
-            <Button href="/services" variant="outline" size="lg" className="border-white/20 text-white hover:bg-white/10 hover:text-white" id="hero-cta-secondary">
-              Explore Our Services
             </Button>
           </div>
         </div>

@@ -1,0 +1,12 @@
+{
+  "crons": [
+    {
+      "path": "/api/news?refresh=true",
+      "schedule": "0 3 * * *"
+    },
+    {
+      "path": "/api/cron/blog",
+      "schedule": "0 4 * * *"
+    }
+  ]
+}

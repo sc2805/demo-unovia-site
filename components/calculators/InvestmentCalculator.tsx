@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
+import { TrendingUp, ArrowRight } from "lucide-react";
 
 type CalculatorMode = "SIP" | "LUMPSUM";
 
@@ -34,7 +35,7 @@ export default function InvestmentCalculator() {
   const [inflationRate, setInflationRate] = useState<number>(6);
 
   const calculateResults = () => {
-    let yearlyData: YearData[] = [];
+    const yearlyData: YearData[] = [];
     
     if (mode === "SIP") {
       let currentSip = monthlyInvestment;
@@ -367,12 +368,12 @@ export default function InvestmentCalculator() {
                   dataKey="value"
                   stroke="none"
                 >
-                  {chartData.map((entry, index) => (
-                    <Cell key={`cell-\${index}`} fill={entry.color} />
+                  {chartData.map((entry) => (
+                    <Cell key={`cell-${entry.color}`} fill={entry.color} />
                   ))}
                 </Pie>
                 <Tooltip 
-                  formatter={(value: any) => formatCurrency(Number(value))}
+                  formatter={(value: unknown) => formatCurrency(Number(value))}
                   contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
                 />
               </PieChart>
@@ -408,7 +409,7 @@ export default function InvestmentCalculator() {
               
               {adjustForInflation && (
                 <div className="flex justify-between items-center pt-2">
-                  <span className="text-sm font-bold text-gray-600">Real Value (Today's Value)</span>
+                   <span className="text-sm font-bold text-gray-600">Real Value (Today&apos;s Value)</span>
                   <span className="text-lg font-bold text-emerald-600">{formatCurrency(realValue)}</span>
                 </div>
               )}
@@ -417,6 +418,30 @@ export default function InvestmentCalculator() {
         </div>
       </div>
       
+      {/* High-Converting Investment CTA Banner */}
+      <div className="p-6 md:p-8 bg-gradient-to-r from-navy-950 via-navy-900 to-navy-950 rounded-3xl border border-gold-400/30 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl my-8">
+        <div className="space-y-2 text-center md:text-left">
+          <span className="inline-flex items-center gap-1.5 px-3.5 py-1 bg-gold-500/20 text-gold-400 text-xs font-extrabold uppercase tracking-widest rounded-full border border-gold-400/30">
+            <TrendingUp className="w-3.5 h-3.5" /> Start Investing Today
+          </span>
+          <h4 className="text-xl md:text-2xl font-extrabold text-white">
+            Ready to Turn These Projections Into Wealth?
+          </h4>
+          <p className="text-sm text-gray-300 max-w-xl">
+            Execute your mutual fund & wealth creation strategy with Unovia Consulting&apos;s digital platform partner.
+          </p>
+        </div>
+        <a
+          href="https://partners.creso.in/mfd/unovia"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center gap-2 px-6 py-4 bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-400 hover:to-gold-500 text-navy-950 font-extrabold text-sm rounded-xl shadow-xl hover:scale-105 transition-all flex-shrink-0"
+        >
+          Start Your Investment Journey
+          <ArrowRight className="w-4 h-4 text-navy-950" />
+        </a>
+      </div>
+
       {/* Bottom Section: Year-wise Breakdown Table */}
       <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
         <div className="p-6 lg:p-8 bg-navy-800 text-white">
