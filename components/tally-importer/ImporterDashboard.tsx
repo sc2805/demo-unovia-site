@@ -12,14 +12,10 @@ import {
   UploadCloud,
   Download,
   CheckCircle2,
-  AlertTriangle,
   FileCode,
   HelpCircle,
   RefreshCw,
-  Edit3,
   Layers,
-  ArrowRight,
-  Shield,
   Copy,
   Zap,
 } from "lucide-react";
@@ -34,7 +30,6 @@ export default function ImporterDashboard() {
   const [fileName, setFileName] = useState<string | null>(null);
   const [isGuideOpen, setIsGuideOpen] = useState<boolean>(false);
   const [copiedScript, setCopiedScript] = useState<boolean>(false);
-  const [editingRowId, setEditingRowId] = useState<string | null>(null);
 
   // Switch template / mock data when voucher type changes
   const handleVoucherTypeChange = (type: string) => {
@@ -58,7 +53,7 @@ export default function ImporterDashboard() {
         const workbook = XLSX.read(data, { type: "array" });
         const sheetName = workbook.SheetNames[0];
         const worksheet = workbook.Sheets[sheetName];
-        const jsonData = XLSX.utils.sheet_to_json<Record<string, any>>(worksheet);
+        const jsonData = XLSX.utils.sheet_to_json<Record<string, unknown>>(worksheet);
 
         if (jsonData.length === 0) {
           alert("Uploaded Excel sheet appears to be empty.");
@@ -84,21 +79,21 @@ export default function ImporterDashboard() {
           const rawVchNo = getKey("voucher number", "voucher no", "inv no", "invoice number", "ref no", "txn id") || `VCH-${1000 + index}`;
           const rawParty = getKey("party name", "customer name", "vendor name", "party", "account name", "particulars") || "Cash Account";
           const rawLedger = getKey("ledger name", "sales ledger", "purchase ledger", "category", "account") || (activeVoucherType === "Sales" ? "Sales Account" : "Purchase Account");
-          const rawAmount = parseFloat(getKey("amount", "taxable amount", "value", "total", "net amount") || "0");
-          const rawGstRate = parseFloat(getKey("gst rate", "gst %", "tax rate", "rate") || "18");
+          const rawAmount = parseFloat(String(getKey("amount", "taxable amount", "value", "total", "net amount") || "0"));
+          const rawGstRate = parseFloat(String(getKey("gst rate", "gst %", "tax rate", "rate") || "18"));
           const rawGstType = getKey("gst type", "tax type") || "Intra-State (CGST+SGST)";
           const rawNarration = getKey("narration", "remarks", "description", "note") || "Imported via Tally Importer SaaS";
 
           return {
             id: `row-${index}-${Date.now()}`,
             date: String(rawDate),
-            voucherType: (activeVoucherType as any) || "Sales",
+            voucherType: (activeVoucherType as TallyTransactionRow["voucherType"]) || "Sales",
             voucherNumber: String(rawVchNo),
             partyName: String(rawParty),
             ledgerName: String(rawLedger),
             amount: isNaN(rawAmount) ? 1000 : rawAmount,
             gstRate: isNaN(rawGstRate) ? 18 : rawGstRate,
-            gstType: rawGstType as any,
+            gstType: (rawGstType as TallyTransactionRow["gstType"]) || "Intra-State (CGST+SGST)",
             narration: String(rawNarration),
             status: isNaN(rawAmount) || rawAmount === 0 ? "warning" : "valid",
           };
@@ -115,7 +110,7 @@ export default function ImporterDashboard() {
   };
 
   // Inline row edit handler
-  const updateRowField = (id: string, field: keyof TallyTransactionRow, value: any) => {
+  const updateRowField = (id: string, field: keyof TallyTransactionRow, value: TallyTransactionRow[keyof TallyTransactionRow]) => {
     setRows((prev) =>
       prev.map((row) => (row.id === id ? { ...row, [field]: value } : row))
     );

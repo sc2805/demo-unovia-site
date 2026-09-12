@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import ImporterDashboard from "@/components/tally-importer/ImporterDashboard";
 import SaaSFeaturesPricing from "@/components/tally-importer/SaaSFeaturesPricing";
 import CTABanner from "@/components/sections/CTABanner";
-import { Shield, Zap, FileSpreadsheet, CheckCircle2, Server, HelpCircle, ArrowRight } from "lucide-react";
+import { Shield, Zap, CheckCircle2, Server, HelpCircle } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Tally Excel Importer SaaS — Convert Excel & CSV to Tally Prime XML",

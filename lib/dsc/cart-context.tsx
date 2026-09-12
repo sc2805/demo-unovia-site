@@ -32,7 +32,6 @@ interface CartContextType {
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 const CART_STORAGE_KEY = "unovia-dsc-cart";
-const TOKEN_STORAGE_KEY = "unovia-dsc-token";
 
 interface StoredCart {
   items: { productId: string; quantity: number }[];

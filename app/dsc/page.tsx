@@ -16,9 +16,7 @@ import {
   HelpCircle,
   FileText,
   Key,
-  Lock,
   Zap,
-  Award,
 } from "lucide-react";
 import { getActiveProducts, type DSCProduct } from "@/lib/dsc/products";
 import { CERTIFICATE_TYPE_FILTERS, VALIDITY_OPTIONS, SORT_OPTIONS } from "@/lib/dsc/config";

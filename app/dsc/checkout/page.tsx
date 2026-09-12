@@ -6,7 +6,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import {
   User,
   Phone,
@@ -37,8 +36,7 @@ const INDIAN_STATES = [
 ];
 
 export default function CheckoutPage() {
-  const router = useRouter();
-  const { items, tokenSelected, cartCount, cartTotal, clearCart } = useCart();
+  const { items, tokenSelected, cartTotal, clearCart } = useCart();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [showSuccess, setShowSuccess] = useState(false);
@@ -65,7 +63,6 @@ export default function CheckoutPage() {
     if (error) setError(null);
   };
 
-  const subtotal = items.reduce((sum, i) => sum + i.product.grossAmount * i.quantity, 0);
   const totalGst = items.reduce((sum, i) => sum + i.product.gstAmount * i.quantity, 0);
   const totalBasic = items.reduce((sum, i) => sum + i.product.basicAmount * i.quantity, 0);
 

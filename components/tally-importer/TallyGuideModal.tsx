@@ -5,7 +5,7 @@
 // Visual walkthrough explaining Tally HTTP Server setup & XML Import process
 // =============================================================================
 
-import { X, CheckCircle2, Server, FileCode, ArrowRight, Copy, Terminal } from "lucide-react";
+import { X, CheckCircle2, Server, Copy, Terminal } from "lucide-react";
 import { useState } from "react";
 
 interface TallyGuideModalProps {
@@ -106,7 +106,7 @@ export default function TallyGuideModal({ isOpen, onClose }: TallyGuideModalProp
 
             <div className="space-y-3 text-sm text-gray-700">
               <p className="text-xs text-gray-600">
-                Ensure Tally's local ODBC/ODBC HTTP server is enabled in Tally Prime settings:
+                Ensure Tally&apos;s local ODBC/ODBC HTTP server is enabled in Tally Prime settings:
               </p>
               <div className="bg-white p-3 rounded-lg border border-gray-200 text-xs font-mono text-gray-800 space-y-1">
                 <div><span className="text-navy-700 font-bold">Path:</span> F1: Help &gt; Settings &gt; Connectivity &gt; Client/Server configuration</div>

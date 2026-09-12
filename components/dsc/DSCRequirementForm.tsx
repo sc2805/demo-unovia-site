@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useId } from "react";
-import { CheckCircle2, ShieldCheck, Send, Loader2, Sparkles, Phone, AlertCircle, HelpCircle } from "lucide-react";
+import { CheckCircle2, ShieldCheck, Send, Loader2, Sparkles, Phone, AlertCircle } from "lucide-react";
 import Button from "@/components/ui/Button";
 
 // Pricing rules lookup (INR)

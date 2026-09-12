@@ -17,7 +17,7 @@ import {
   Package,
 } from "lucide-react";
 import { useCart } from "@/lib/dsc/cart-context";
-import { TOKEN_CONFIG, SUPPORT_CHARGE_CONFIG } from "@/lib/dsc/config";
+import { TOKEN_CONFIG } from "@/lib/dsc/config";
 
 export default function CartPage() {
   const {
@@ -31,7 +31,6 @@ export default function CartPage() {
     clearCart,
   } = useCart();
 
-  const subtotal = items.reduce((sum, i) => sum + i.product.grossAmount * i.quantity, 0);
   const totalGst = items.reduce((sum, i) => sum + i.product.gstAmount * i.quantity, 0);
   const totalBasic = items.reduce((sum, i) => sum + i.product.basicAmount * i.quantity, 0);
 

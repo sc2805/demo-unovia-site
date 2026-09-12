@@ -7,18 +7,12 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import {
-  Shield,
   Search,
-  Filter,
-  CheckCircle2,
-  Clock,
-  AlertCircle,
   RefreshCw,
   MessageCircle,
   Phone,
   Mail,
   Lock,
-  Package,
   Usb,
   X,
   ChevronRight,

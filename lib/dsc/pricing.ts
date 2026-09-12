@@ -4,8 +4,8 @@
 // All final pricing MUST be calculated server-side. Never trust browser values.
 // =============================================================================
 
-import { getProductById, type DSCProduct } from "./products";
-import { TOKEN_CONFIG, SUPPORT_CHARGE_CONFIG, GST_RATE } from "./config";
+import { getProductById } from "./products";
+import { TOKEN_CONFIG, SUPPORT_CHARGE_CONFIG } from "./config";
 
 export interface CartItemInput {
   productId: string;

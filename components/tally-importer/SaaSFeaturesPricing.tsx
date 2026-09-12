@@ -5,8 +5,7 @@
 // Highlighting capabilities, ROI calculator, and CA firm pricing tiers
 // =============================================================================
 
-import { Check, Zap, ShieldCheck, Database, FileSpreadsheet, Sparkles, ArrowRight, HelpCircle } from "lucide-react";
-import Link from "next/link";
+import { Check, Zap, ShieldCheck, FileSpreadsheet, Sparkles, ArrowRight } from "lucide-react";
 import { useState } from "react";
 
 export default function SaaSFeaturesPricing() {
@@ -175,7 +174,7 @@ export default function SaaSFeaturesPricing() {
 
                   <div className="space-y-3 text-left mb-8">
                     <p className={`text-xs font-bold uppercase tracking-wider ${plan.highlight ? "text-gold-400" : "text-gray-400"}`}>
-                      What's Included
+                      What&apos;s Included
                     </p>
                     <ul className="space-y-2.5">
                       {plan.features.map((feat) => (

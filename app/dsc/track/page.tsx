@@ -6,12 +6,10 @@
 
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
-import Link from "next/link";
 import {
   Search,
   CheckCircle2,
   Clock,
-  ShieldCheck,
   Package,
   Usb,
   MessageCircle,
@@ -19,7 +17,6 @@ import {
   ArrowRight,
   AlertCircle,
   Loader2,
-  Calendar,
 } from "lucide-react";
 import type { DSCOrder } from "@/lib/dsc/orders";
 import { COMPANY } from "@/lib/constants";
