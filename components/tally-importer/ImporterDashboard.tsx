@@ -6,6 +6,7 @@
 // =============================================================================
 
 import { useState, useMemo, ChangeEvent } from "react";
+// @ts-ignore - sheetjs xlsx types
 import * as XLSX from "xlsx";
 import {
   FileSpreadsheet,
@@ -61,7 +62,7 @@ export default function ImporterDashboard() {
         }
 
         // Map parsed JSON rows to standardized TallyTransactionRow format
-        const parsedRows: TallyTransactionRow[] = jsonData.map((item, index) => {
+        const parsedRows: TallyTransactionRow[] = jsonData.map((item: Record<string, any>, index: number) => {
           // Flexible key lookup logic for common Excel headers
           const getKey = (...possibleKeys: string[]) => {
             for (const key of possibleKeys) {

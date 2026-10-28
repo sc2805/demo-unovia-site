@@ -16,6 +16,7 @@ const RESOURCE_LINKS = [
 
 const COMPANY_LINKS = [
   { label: "About Us", href: "/about" },
+  { label: "Founder & Pricing", href: "/founder-pricing" },
   { label: "Contact", href: "/contact" },
   { label: "Privacy Policy", href: "/privacy-policy" },
   { label: "Terms of Use", href: "/terms-of-use" },

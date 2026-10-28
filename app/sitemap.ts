@@ -19,6 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/dsc/track", priority: 0.7, changeFrequency: "weekly" as const },
     { path: "/insights", priority: 0.8, changeFrequency: "weekly" as const },
     { path: "/contact", priority: 0.7, changeFrequency: "monthly" as const },
+    { path: "/founder-pricing", priority: 0.85, changeFrequency: "monthly" as const },
     { path: "/daily-brief", priority: 0.6, changeFrequency: "daily" as const },
     { path: "/calculators/sip-lumpsum", priority: 0.6, changeFrequency: "monthly" as const },
     { path: "/privacy-policy", priority: 0.3, changeFrequency: "monthly" as const },

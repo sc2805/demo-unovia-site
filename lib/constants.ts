@@ -43,6 +43,7 @@ export const NAV_LINKS = [
       { label: "SIP & Lumpsum Calculator", href: "/calculators/sip-lumpsum" },
     ],
   },
+  { label: "Founder & Pricing", href: "/founder-pricing" },
   { label: "Contact", href: "/contact" },
 ] as const;
 

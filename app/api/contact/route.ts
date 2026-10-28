@@ -9,7 +9,7 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
 
-    const { name, email, phone, service, preferredDate, preferredTime, message } = body;
+    const { name, email, phone, service, clientType, budget, preferredDate, preferredTime, message } = body;
 
     // Validate required fields
     if (!name || !email || !phone || !service || !message) {
@@ -34,6 +34,8 @@ export async function POST(req: NextRequest) {
       email,
       phone,
       service,
+      clientType,
+      budget,
       preferredDate,
       preferredTime,
       message,

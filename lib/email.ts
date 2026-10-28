@@ -9,6 +9,8 @@ interface ContactFormData {
   email: string;
   phone: string;
   service: string;
+  clientType?: string;
+  budget?: string;
   preferredDate?: string;
   preferredTime?: string;
   message: string;
@@ -32,7 +34,9 @@ export async function sendContactEmail(data: ContactFormData) {
     console.log(`Name:           ${data.name}`);
     console.log(`Email:          ${data.email}`);
     console.log(`Phone:          ${data.phone}`);
+    console.log(`Client Type:    ${data.clientType || "Individual"}`);
     console.log(`Service:        ${data.service}`);
+    console.log(`Budget:         ${data.budget || "Not specified"}`);
     console.log(`Preferred Date: ${data.preferredDate || "N/A"}`);
     console.log(`Preferred Time: ${data.preferredTime || "N/A"}`);
     console.log(`Message:        ${data.message}`);
@@ -49,7 +53,7 @@ export async function sendContactEmail(data: ContactFormData) {
       from: `Unovia Consulting <${fromEmail}>`,
       to: [contactEmail],
       reply_to: data.email,
-      subject: `New Inquiry: ${data.service} — ${data.name}`,
+      subject: `New Inquiry [${data.budget || "Consultation"}]: ${data.service} — ${data.name}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #1f2937;">
           <div style="background: #0F2B5B; padding: 24px; border-radius: 8px 8px 0 0;">
@@ -69,10 +73,28 @@ export async function sendContactEmail(data: ContactFormData) {
                 <td style="padding: 8px 0; color: #6b7280;">Phone</td>
                 <td style="padding: 8px 0;">${data.phone}</td>
               </tr>
+              ${
+                data.clientType
+                  ? `
+              <tr>
+                <td style="padding: 8px 0; color: #6b7280;">Client Type</td>
+                <td style="padding: 8px 0; font-weight: 600;">${data.clientType}</td>
+              </tr>`
+                  : ""
+              }
               <tr>
                 <td style="padding: 8px 0; color: #6b7280;">Service</td>
                 <td style="padding: 8px 0; font-weight: 600; color: #0F2B5B;">${data.service}</td>
               </tr>
+              ${
+                data.budget
+                  ? `
+              <tr>
+                <td style="padding: 8px 0; color: #6b7280;">Approx. Budget</td>
+                <td style="padding: 8px 0; font-weight: 600; color: #C5A55A;">${data.budget}</td>
+              </tr>`
+                  : ""
+              }
               ${
                 data.preferredDate || data.preferredTime
                   ? `
