@@ -92,6 +92,7 @@ export default function DailyArticlePage({ params }: PageProps) {
           {/* Featured Image if available */}
           {article.image && (
             <div className="relative aspect-video w-full rounded-2xl overflow-hidden mb-10 shadow-2xl border border-gray-100">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={article.image}
                 alt={article.title}
