@@ -49,6 +49,7 @@ function stripHtml(html) {
 
 async function fetchNews() {
   console.log('Fetching latest news for internal publishing...');
+  const targetPath = path.join(process.cwd(), 'lib', 'daily-news.json');
   
   try {
     const feed = await parser.parseURL(RSS_URL);
@@ -77,13 +78,16 @@ async function fetchNews() {
       articles: items
     };
 
-    const targetPath = path.join(process.cwd(), 'lib', 'daily-news.json');
     fs.writeFileSync(targetPath, JSON.stringify(data, null, 2));
-    
     console.log(`Successfully saved ${items.length} unique articles with slugs to ${targetPath}`);
   } catch (error) {
-    console.error('Error fetching news:', error);
-    process.exit(1);
+    console.warn('Warning: Could not fetch latest RSS news during build. Checking cache...', error?.message);
+    if (fs.existsSync(targetPath)) {
+      console.log('Using existing cached lib/daily-news.json.');
+    } else {
+      console.error('Fatal: No cached news file found.');
+      process.exit(1);
+    }
   }
 }
 
